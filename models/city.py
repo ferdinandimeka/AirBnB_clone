@@ -1,22 +1,15 @@
-#!/usr/bin/python
-""" holds class City"""
-import models
-from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, ForeignKey
-from sqlalchemy.orm import relationship
+#!/usr/bin/python3
+"""Holds User class that inherits from BaseModel"""
+from models.base_model import BaseModel
 
 
-class City(BaseModel, Base):
-    """representation of city in City class"""
-    if models.storage_db == "db":
-        __tablename__ = 'cities'
-        state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
-        name = Column(String(128), nullable=False)
-        places = relationship("Place", backref="cities")
-    else:
-        state_id = ""
-        name = ""
-        
-    def __init__(self, *args, **kwargs):
-        """initializes city"""
-        super().__init__(*args, **kwargs)
+class City(BaseModel):
+    """Initializes the City class
+
+    Attributes:
+        state_id (str) - Refers to the State.id
+        name (str) - The name of the city
+    """
+
+    state_id = ""
+    name = ""

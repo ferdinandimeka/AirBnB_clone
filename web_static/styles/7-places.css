@@ -1,6 +1,6 @@
 .places {
     width: 100%;
-    border: 0;
+    border: 0px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

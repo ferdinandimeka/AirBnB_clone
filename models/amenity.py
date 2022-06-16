@@ -1,17 +1,13 @@
-#!/usr/bin/python
-""" holds class Amenity"""
-import models
-from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String
+#!/usr/bin/python3
+"""Holds User class that inherits from BaseModel"""
+from models.base_model import BaseModel
 
-class Amenity(BaseModel, Base):
-    """representation of Amenity"""
-    if models.storage_db == 'db':
-        __tablename__ = 'amenities'
-        name = Column(String(128), nullable=False)
-    else:
-        name = ""
-        
-    def __init__(self, *args, **kwargs):
-        """initializes Amenity"""
-        super().__init__(*args, **kwargs)
+
+class Amenity(BaseModel):
+    """Initializes the Amenity class
+
+    Attributes:
+        name (str) - The name of the amenity
+    """
+
+    name = ""

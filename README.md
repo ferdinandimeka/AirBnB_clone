@@ -1,152 +1,183 @@
-#AirBnB - The Console
-The console is the first segment of the AirBnB project at Alx School that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project is to eventually deploy our server a simple copy of the AirBnB Website(HBnB). A command interpreter is created in this segment to manage objects for the AirBnB(HBnB) website.
+# AirBnB_clone
+This first step consists of a custom command-line interface for data management, and the base classes for the storage of this data.
 
-#### Functionalities of this command interpreter:
-* Create a new object (ex: a new User or a new Place)
-* Retrieve an object from a file, a database etc...
-* Do operations on objects (count, compute stats, etc...)
-* Update attributes of an object
-* Destroy an object
+## Description
+This team project is part of the ALX School Full-Stack Software Engineer program. 
+It's the first step towards building a first full web application: an AirBnB clone. This first step consists of a custom command-line interface for data management, and the base classes for the storage of this data.
 
-## Table of Content
-* [Environment](#environment)
-* [Installation](#installation)
-* [File Descriptions](#file-descriptions)
-* [Usage](#usage)
-* [Examples of use](#examples-of-use)
-* [Bugs](#bugs)
-* [Authors](#authors)
-* [License](#license)
+Resources
+Read or watch:
+* [cmd module](https://docs.python.org/3.4/library/cmd.html)
+* packages concept page
+* [uuid module](https://docs.python.org/3.4/library/uuid.html)
+* [datetime](https://docs.python.org/3.4/library/datetime.html)
+* [unittest module](https://docs.python.org/3.4/library/unittest.html#module-unittest)
+* [args/kwargs](https://yasoob.me/2013/08/04/args-and-kwargs-in-python-explained/)
+* [Python test cheatsheet](https://www.pythonsheets.com/notes/python-tests.html)
 
-## Environment
-This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.4.3)
+# Learning Objectives
+At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
-## Installation
-* Clone this repository: `git clone "https://github.com/imekaferdy/AirBnB_clone.git"`
-* Access AirBnb directory: `cd AirBnB_clone`
-* Run hbnb(interactively): `./console` and enter command
-* Run hbnb(non-interactively): `echo "<command>" | ./console.py`
+# General
+* How to create a Python package
+* How to create a command interpreter in Python using the cmd module
+* What is Unit testing and how to implement it in a large project
+* How to serialize and deserialize a Class
+* How to write and read a JSON file
+* How to manage datetime
+* What is an UUID
+* What is *args and how to use it
+* What is **kwargs and how to use it
+* How to handle named arguments in a function
 
-## File Descriptions
-[console.py](console.py) - the console contains the entry point of the command interpreter. 
-List of commands this console current supports:
-* `EOF` - exits console 
-* `quit` - exits console
-* `<emptyline>` - overwrites default emptyline method and does nothing
-* `create` - Creates a new instance of`BaseModel`, saves it (to the JSON file) and prints the id
-* `destroy` - Deletes an instance based on the class name and id (save the change into the JSON file). 
-* `show` - Prints the string representation of an instance based on the class name and id.
-* `all` - Prints all string representation of all instances based or not on the class name. 
-* `update` - Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file). 
 
-#### `models/` directory contains classes used for this project:
-[base_model.py](/models/base_model.py) - The BaseModel class from which future classes will be derived
-* `def __init__(self, *args, **kwargs)` - Initialization of the base model
-* `def __str__(self)` - String representation of the BaseModel class
-* `def save(self)` - Updates the attribute `updated_at` with the current datetime
-* `def to_dict(self)` - returns a dictionary containing all keys/values of the instance
+# Requirements
+## Python Scripts
+* Allowed editors: ``vi, vim, emacs``
+* All your files will be interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5)
+* All your files should end with a new line
+* The first line of all your files should be exactly #!/usr/bin/python3
+* A README.md file, at the root of the folder of the project, is mandatory
+* Your code should use the pycodestyle (version 2.7.*)
+* All your files must be executable
+* The length of your files will be tested using ``wc``
+* All your modules should have a documentation ``(python3 -c 'print(__import__("my_module").__doc__)')``
+* All your classes should have a documentation ``(python3 -c 'print(__import__("my_module").MyClass.__doc__)')``
+* All your functions (inside and outside a class) should have a documentation ``(python3 -c 'print(__import__("my_module").my_function.__doc__)' and python3 -c ```'print(__import__("my_module").MyClass.my_function.__doc__)')``
+* A documentation is not a simple word, it’s a real sentence explaining what’s the purpose of the module, class or method (the length of it will be verified)
 
-Classes inherited from Base Model:
-* [amenity.py](/models/amenity.py)
-* [city.py](/models/city.py)
-* [place.py](/models/place.py)
-* [review.py](/models/review.py)
-* [state.py](/models/state.py)
-* [user.py](/models/user.py)
+## Python Unit Tests
+* Allowed editors: ``vi, vim, emacs``
+* All your files should end with a new line
+* All your test files should be inside a folder tests
+* You have to use the [unittest module](https://docs.python.org/3.4/library/unittest.html#module-unittest)
+* All your test files should be python files (extension: .py)
+* All your test files and folders should start by ``test_``
+* Your file organization in the tests folder should be the same as your project
+* e.g., For models/base_model.py, unit tests must be in: ``tests/test_models/test_base_model.py``
+* e.g., For models/user.py, unit tests must be in: ``tests/test_models/test_user.py``
+* All your tests should be executed by using this command: ``python3 -m unittest discover tests``
+* You can also test file by file by using this command: ``python3 -m unittest tests/test_models/test_base_model.py``
+* All your modules should have a documentation ``(python3 -c 'print(__import__("my_module").__doc__)')``
+* All your classes should have a documentation ``(python3 -c 'print(__import__("my_module").MyClass.__doc__)')``
+* All your functions (inside and outside a class) should have a documentation ``(python3 -c 'print(__import__("my_module").my_function.__doc__)'`` and ``python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)')``
+* We strongly encourage you to work together on test cases, so that you don’t miss any edge case
 
-#### `/models/engine` directory contains File Storage class that handles JASON serialization and deserialization :
-[file_storage.py](/models/engine/file_storage.py) - serializes instances to a JSON file & deserializes back to instances
-* `def all(self)` - returns the dictionary __objects
-* `def new(self, obj)` - sets in __objects the obj with key <obj class name>.id
-* `def save(self)` - serializes __objects to the JSON file (path: __file_path)
-* ` def reload(self)` -  deserializes the JSON file to __objects
-
-/engine` directory contains File Storage class that handles JASON serialization and deserialization :
-[file_storage.py](/models/engine/file_storage.py) - serializes instances to a JSON file & deserializes back to instances
-* `def all(self)` - returns the dictionary __objects
-* `def new(self, obj)` - sets in __objects the obj with key <obj class name>.id
-* `def save(self)` - serializes __objects to the JSON file (path: __file_path)
-* ` def reload(self)` -  deserializes the JSON file to __objects
-
-TestBaseModel class:
-* `def test_is_base_model(self)` - Test that the instatiation of a BaseModel works
-* `def test_created_at_instantiation(self)` - Test created_at is a pub. instance attribute of type datetime
-* `def test_updated_at_instantiation(self)` - Test updated_at is a pub. instance attribute of type datetime
-* `def test_diff_datetime_objs(self)` - Test that two BaseModel instances have different datetime objects
-
-[/test_models/test_amenity.py](/tests/test_models/test_amenity.py) - Contains the TestAmenityDocs class:
-* `def setUpClass(cls)` - Set up for the doc tests
-* `def test_pep8_conformance_amenity(self)` - Test that models/amenity.py conforms to PEP8
-* `def test_pep8_conformance_test_amenity(self)` - Test that tests/test_models/test_amenity.py conforms to PEP8
-* `def test_amenity_module_docstring(self)` - Test for the amenity.py module docstring
-* `def test_amenity_class_docstring(self)` - Test for the Amenity class docstring
-
-[/test_models/test_city.py](/tests/test_models/test_city.py) - Contains the TestCityDocs class:
-* `def setUpClass(cls)` - Set up for the doc tests
-* `def test_pep8_conformance_city(self)` - Test that models/city.py conforms to PEP8
-* `def test_pep8_conformance_test_city(self)` - Test that tests/test_models/test_city.py conforms to PEP8
-* `def test_city_module_docstring(self)` - Test for the city.py module docstring
-* `def test_city_class_docstring(self)` - Test for the City class docstring
-
-[/test_models/test_file_storage.py](/tests/test_models/test_file_storage.py) - Contains the TestFileStorageDocs class:
-* `def setUpClass(cls)` - Set up for the doc tests
-* `def test_pep8_conformance_file_storage(self)` - Test that models/file_storage.py conforms to PEP8
-* `def test_pep8_conformance_test_file_storage(self)` - Test that tests/test_models/test_file_storage.py conforms to PEP8
-* `def test_file_storage_module_docstring(self)` - Test for the file_storage.py module docstring
-* `def test_file_storage_class_docstring(self)` - Test for the FileStorage class docstring
-
-[/test_models/test_place.py](/tests/test_models/test_place.py) - Contains the TestPlaceDoc class:
-* `def setUpClass(cls)` - Set up for the doc tests
-* `def test_pep8_conformance_place(self)` - Test that models/place.py conforms to PEP8.
-* `def test_pep8_conformance_test_place(self)` - Test that tests/test_models/test_place.py conforms to PEP8.
-* `def test_place_module_docstring(self)` - Test for the place.py module docstring
-* `def test_place_class_docstring(self)` - Test for the Place class docstring
-
-[/test_models/test_review.py](/tests/test_models/test_review.py) - Contains the TestReviewDocs class:
-* `def setUpClass(cls)` - Set up for the doc tests
-* `def test_pep8_conformance_review(self)` - Test that models/review.py conforms to PEP8
-* `def test_pep8_conformance_test_review(self)` - Test that tests/test_models/test_review.py conforms to PEP8
-* `def test_review_module_docstring(self)` - Test for the review.py module docstring
-* `def test_review_class_docstring(self)` - Test for the Review class docstring
-
-[/test_models/state.py](/tests/test_models/test_state.py) - Contains the TestStateDocs class:
-* `def setUpClass(cls)` - Set up for the doc tests
-* `def test_pep8_conformance_state(self)` - Test that models/state.py conforms to PEP8
-* `def test_pep8_conformance_test_state(self)` - Test that tests/test_models/test_state.py conforms to PEP8
-* `def test_state_module_docstring(self)` - Test for the state.py module docstring
-* `def test_state_class_docstring(self)` - Test for the State class docstring
-
-[/test_models/user.py](/tests/test_models/test_user.py) - Contains the TestUserDocs class:
-* `def setUpClass(cls)` - Set up for the doc tests
-* `def test_pep8_conformance_user(self)` - Test that models/user.py conforms to PEP8
-* `def test_pep8_conformance_test_user(self)` - Test that tests/test_models/test_user.py conforms to PEP8
-* `def test_user_module_docstring(self)` - Test for the user.py module docstring
-* `def test_user_class_docstring(self)` - Test for the User class docstring
-
-## Examples of use
+## Execution
+Your shell should work like this in interactive mode:
 ```
-vagrantAirBnB_clone$./console.py
+$ ./console.py
 (hbnb) help
 
 Documented commands (type help <topic>):
 ========================================
-EOF  all  create  destroy  help  quit  show  update
+EOF  help  quit
 
-(hbnb) all MyModel
-** class doesn't exist **
-(hbnb) create BaseModel
-7da56403-cc45-4f1c-ad32-bfafeb2bb050
-(hbnb) all BaseModel
-[[BaseModel] (7da56403-cc45-4f1c-ad32-bfafeb2bb050) {'updated_at': datetime.datetime(2017, 9, 28, 9, 50, 46, 772167), 'id': '7da56403-cc45-4f1c-ad32-bfafeb2bb050', 'created_at': datetime.datetime(2017, 9, 28, 9, 50, 46, 772123)}]
-(hbnb) show BaseModel 7da56403-cc45-4f1c-ad32-bfafeb2bb050
-[BaseModel] (7da56403-cc45-4f1c-ad32-bfafeb2bb050) {'updated_at': datetime.datetime(2017, 9, 28, 9, 50, 46, 772167), 'id': '7da56403-cc45-4f1c-ad32-bfafeb2bb050', 'created_at': datetime.datetime(2017, 9, 28, 9, 50, 46, 772123)}
-(hbnb) destroy BaseModel 7da56403-cc45-4f1c-ad32-bfafeb2bb050
-(hbnb) show BaseModel 7da56403-cc45-4f1c-ad32-bfafeb2bb050
-** no instance found **
+(hbnb) 
+(hbnb) 
 (hbnb) quit
+$
+```
+But also in non-interactive mode: (like the Shell project in C)
+```
+$ echo "help" | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
+$ cat test_help
+help
+$
+$ cat test_help | ./console.py
+(hbnb)
+
+Documented commands (type help <topic>):
+========================================
+EOF  help  quit
+(hbnb) 
+$
 ```
 
-## Bugs
-No known bugs at this time. 
+## Steps
+You won’t build this application all at once, but step by step.
 
-# AirBnB_clone
+Each step will link to a concept:
+
+## The console
+* create your data model
+* manage (create, update, destroy, etc) objects via a console / command interpreter
+* store and persist objects to a file (JSON file)
+
+The first piece is to manipulate a powerful storage system. This storage engine will give us an abstraction between “My object” and “How they are stored and persisted”. This means: from your console code (the command interpreter itself) and from the front-end and RestAPI you will build later, you won’t have to pay attention (take care) of how your objects are stored.
+
+This abstraction will also allow you to change the type of storage easily without updating all of your codebase.
+
+The console will be a tool to validate this storage engine.
+
+## Files and Directories
+* ``models`` directory will contain all classes used for the entire project. A class, called “model” in a OOP project is the representation of an object/instance.
+* ``tests`` directory will contain all unit tests.
+* ``console.py`` file is the entry point of our command interpreter.
+* ``models/base_model.py`` file is the base class of all our models. It contains common elements:
+  * attributes: ``id``, ``created_at`` and ``updated_at``
+  * methods: ``save()`` and ``to_json()``
+* ``models/engine`` directory will contain all storage classes (using the same prototype). For the moment you will have only one: ``file_storage.py``.
+
+## Console and Command Usage
+
+The console is a Unix shell-like command line user interface provided by the python [CmdModule](https://wiki.python.org/moin/CmdModule)
+It prints a prompt and waits for the user for input, for our project we used **(hbnb)** 
+
+Command | Example
+------- | -------
+Display commands help | ```(hbnb) help <command>```
+Create object (prints its id)| ```(hbnb) create <class>```
+Destroy object | ```(hbnb) destroy <class> <id>``` or ```(hbnb) <class>.destroy(<id>)```
+Show object | ```(hbnb) show <class> <id>``` or ```(hbnb) <class>.show(<id>)```
+Show "all" objects or instances class | ```(hbnb) all``` or ```(hbnb) all <class>```
+Run console | ```./console.py```
+Quit console | ```(hbnb) quit```
+
+
+Help command example
+
+```bash
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  all  count  create  destroy  help  quit  show  update
+```
+
+## Tests
+All the code is tested with the **unittest** module.
+The test for the classes are in the [test_models](./tests/test_models/) folder.
+
+## Web static
+* learn HTML/CSS
+* create the HTML of your application
+* create template of each object
+
+## MySQL storage
+* replace the file storage by a Database storage
+* map your models to a table in database by using an O.R.M.
+
+## Web framework - templating
+* create your first web server in Python
+* make your static HTML file dynamic by using objects stored in a file or database
+
+## RESTful API
+* expose all your objects stored via a JSON web interface
+* manipulate your objects via a RESTful API
+
+## Web dynamic
+* learn JQuery
+* load objects from the client side by using your own RESTful API
+
+## Authors
+
+* **Bernardine BAZUBAGIRA**
+* [**Jackson Eyamu**](https://github.com/de-jackson)

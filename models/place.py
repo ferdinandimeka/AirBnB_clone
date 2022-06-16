@@ -1,73 +1,33 @@
-#!/usr/bin/python
-""" holds class Place"""
-import models
-from models import amenity
-from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
-from sqlalchemy.orm import relationship
+#!/usr/bin/python3
+"""Holds User class that inherits from BaseModel"""
+from models.base_model import BaseModel
 
-if models.storage_db == 'db':
-    place_amenity = Table('place_amenity', Base.metadata,
-                        Column('place_id', String(60),
-                        ForeignKey('place_id', onupdate='CASCADE',
-                        ondelete='CASCADE'), primary_key=True),
-                        Column('amenity_id', String(60),
-                        ForeignKey('amenities.id', onupdate='CASCADE',
-                        ondelete='CASCADE'), primary_key=True))
 
-class Place(BaseModel, Base):
-    """representation of place"""
-    if models.storage_db == 'db':
-        __tablename__ = 'db'
-        city_id = Column(String(60), ForeignKey('cities.id'), nullable=False)
-        user_id = Column(String(60), ForeignKey('users.id'), nullable=False)
-        name = Column(String(128), nullable=False)
-        description = Column(String(1024), nullable=True)
-        number_rooms = Column(Integer, nullable=False, default=0)
-        number_bathrooms = Column(Integer, nullable=False, default=0)
-        max_guest = Column(Integer, nullable=False, default=0)
-        price_by_night = Column(Integer, nullable=False, default=0)
-        latitude = Column(Float, nullable=True)
-        longitude = Column(Float, nullable=True)
-        reviews = relationship('Review', backref='place')
-        amenities = relationship('Amenity', secondary='place_amenity',
-                                backref='place_amenities', viewonly=False)
-    
-    else:
-        city_id = ""
-        user_id = ""
-        name = ""
-        description = ""
-        number_rooms = 0
-        number_bathrooms = 0
-        max_guest = 0
-        price_by_night = 0
-        latitude = 0.0
-        longitude = 0.0
-        amenity_ids = []
-        
-    def __init__(self, *args, **kwargs):
-        """initializes Place"""
-        super().__init__(*args, **kwargs)
-        
-    if models.storage_db != 'db':
-        @property
-        def reviews(self):
-            """getter attribute returns the list of Review instances"""
-            from models.review import Review
-            review_list = []
-            all_reviews = models.storage.all(Review)
-            for review in all_reviews.values():
-                if review.place_id == self.id:
-                    review_list.append(review)
-            return review_list
-        
-        @property
-        def amenities(self):
-            """getter attribute returns the list of Amenity instances"""
-            from models.amenity import Amenity
-            amenity_list = []
-            all_amenities = models.storage.all(Amenity)
-            for amenity in all_amenities.values():
-                amenity_list.append(amenity)
-            return amenity_list
+class Place(BaseModel):
+    """Initializes the Place class
+
+    Attributes:
+        city_id (str) - Refers to the City.id
+        user_id (str) - Refers to the User.id
+        name (str) - The name of the place
+        description (str) - A description of the place
+        number_rooms (int) - The number of rooms
+        number_bathrooms (int) - The number of bathrooms
+        max_guest (int) - The maximum number of guests allowed
+        price_by_night (int) - The cost of a night
+        latitude (float) - The latitude location of the place
+        longitude (float) - The longitude location of the place
+        amenity_ids (list of str) - List of Amenity.id
+    """
+
+    city_id = ""
+    user_id = ""
+    name = ""
+    description = ""
+    number_rooms = 0
+    number_bathrooms = 0
+    max_guest = 0
+    price_by_night = 0
+    latitude = 0.0
+    longitude = 0.0
+    amenity_ids = []

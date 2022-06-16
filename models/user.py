@@ -1,28 +1,19 @@
 #!/usr/bin/python3
-"""holds the user class"""
+"""Holds User class that inherits from BaseModel"""
+from models.base_model import BaseModel
 
-import models
-from models.base_model import BaseModel, Base
-from sqlalchemy import Column, String
-from sqlalchemy.orm import relationship
 
-class User(BaseModel, Base):
-    """representation of a user in the user class"""
-    if models.storage_db == 'db':
-        __tablename__ = 'users'
-        email = Column(String(128), nullable=False)
-        password = Column(String(128), nullable=False)
-        last_name = Column(String(128), nullable=True)
-        first_name = Column(String(128), nullable=True)
-        places = relationship("Place", backref="user")
-        reviews = relationship("Review", backref="user")
-    else:
-        email = ""
-        password = ""
-        last_name = ""
-        first_name = ""
-        
-    def __init__(self, *args, **kwargs):
-        """initializes user"""
-        super().__init__(*args, **kwargs)
-        
+class User(BaseModel):
+    """User class that defines User information
+
+    Attributes:
+        email (str) - Email of the user
+        password (str) - Password of the user
+        first_name (str) - First name of the user
+        last_name (str) - Last name of the user
+    """
+
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""

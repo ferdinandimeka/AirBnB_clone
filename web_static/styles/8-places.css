@@ -1,6 +1,6 @@
 .places {
     width: 100%;
-    border: 0;
+    border: 0px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -28,7 +28,8 @@
 
 .places > article > h2 {
     font-size: 30px;
-    margin: 0 0 0 0;
+
+    margin: 0px 0px 0px 0px;
     align-self: center;
 }
 
@@ -48,12 +49,12 @@
     right: 20px;
 }
 .price_by_night > p {
-    margin: 0 0 0 0;
+    margin: 0px 0px 0px 0px;
 }
 
 .information {
-    align-self: center;
     height: 80px;
+    align-self: center;
     width: 100%;
     border-top: 1px solid #DDDDDD;
     border-bottom: 1px solid #DDDDDD;
